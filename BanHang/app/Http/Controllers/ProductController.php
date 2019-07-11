@@ -23,7 +23,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('product.form');
     }
 
     /**
@@ -34,7 +34,23 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rule= [
+            "title" => "required",
+            "name" => "required",
+            "price" => "required",
+        ];
+        $request->validate($rule);
+        $product = $request->all();
+        $product['image'] = $this->uploadImage($request->image);
+        Product::create($product);
+        return redirect()->route('product.index');
+    }
+    public function uploadImage($img){
+        $name = md5(uniqid(rand(), true)).'_'.time().'.'.$img->getClientOriginalExtension(); 
+        $destinationPath = public_path('uploads'); 
+        $img->move($destinationPath, $name);
+        $nameReturn = 'uploads/'.$name; 
+        return $nameReturn;
     }
 
     /**
