@@ -15,8 +15,20 @@
     return view('welcome');
 });*/
 Route::get('/', function () {
-    return view('user_master');
+    return view('user.user_master');
 });
+
+Route::group(['prefix'=>'user','as'=>'user.'], function(){
+    Route::get('/shop', function () {
+        return view('user.shop');
+    });
+    Route::get('/create', 'ProductCategoryController@create')->name('create');
+    Route::post('/store', 'ProductCategoryController@store')->name('store');
+    Route::get('/edit/{id}', 'ProductCategoryController@edit')->name('edit');
+    Route::put('/update/{id}', 'ProductCategoryController@update')->name('update');
+    Route::delete('/delete/{id}', 'ProductCategoryController@destroy')->name('delete');
+});
+
 
 Route::group(['prefix'=>'category','as'=>'category.'], function(){
     Route::get('/', 'ProductCategoryController@index')->name('index');

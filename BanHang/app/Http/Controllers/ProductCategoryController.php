@@ -15,7 +15,7 @@ class ProductCategoryController extends Controller
     public function index()
     {
         $categories = ProductCategory::select()->get();
-        return view('product_categories.list',['categories'=>$categories]);
+        return view('admin.product_categories.list',['categories'=>$categories]);
     }
 
     /**
@@ -25,7 +25,7 @@ class ProductCategoryController extends Controller
      */
     public function create()
     {
-        return view('product_categories.form');
+        return view('admin.product_categories.form');
     }
 
     /**
@@ -42,7 +42,7 @@ class ProductCategoryController extends Controller
         $request->validate($rule);
         $category = $request->all();
         ProductCategory::create($category);
-        return redirect()->route('category.index');
+        return redirect()->route('admin.product_categories.index');
     }
 
     /**
@@ -65,7 +65,7 @@ class ProductCategoryController extends Controller
     public function edit($id)
     {
         $category = ProductCategory::find($id);
-        return view('product_categories.form',[ 'category' => $category ]);
+        return view('admin.product_categories.form',[ 'category' => $category ]);
     }
 
     /**
@@ -83,7 +83,7 @@ class ProductCategoryController extends Controller
         $request->validate($rule);
         $category = ProductCategory::find($id);
         $category->update($request->all());
-        return redirect()->route('category.index');
+        return redirect()->route('admin.category.index');
     }
 
     /**
@@ -96,6 +96,6 @@ class ProductCategoryController extends Controller
     {
         $category = ProductCategory::find($id);
         $category->delete();
-        return redirect()->route('category.index');
+        return redirect()->route('admin.category.index');
     }
 }
