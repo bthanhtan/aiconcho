@@ -15,7 +15,7 @@
     return view('welcome');
 });*/
 Route::get('/', function () {
-    return view('master');
+    return view('user_master');
 });
 
 Route::group(['prefix'=>'category','as'=>'category.'], function(){
