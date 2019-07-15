@@ -11,34 +11,43 @@
             <div class="p-5">
               <div class="text-center">
                 <h1 class="h4 text-gray-900 mb-4">Create an Product!</h1>
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
               </div>
-              <form class="user" enctype="multipart/form-data">
+              <form class="user" enctype="multipart/form-data" action="{{ isset($product->id) ? route('product.update',['id'=>$product->id]) :  route('product.store')}}" method="post">
+                @if(isset($product->id))
+                @method('put')
+                @endif
+                @csrf
                 <div class="form-group">
-                  <input type="text" class="form-control form-control-user" id="" placeholder="Name" name="name">
+                  <input type="text" class="form-control form-control-user" id="" placeholder="Name" name="name" value="{{ old('name', $product->name ?? '') }}">
                 </div>
-				<div class="form-group">
-                  <select class="custom-select" id="inputGroupSelect01">
-				    <option selected>Choose...</option>
-				    <option value="1">One</option>
-				    <option value="2">Two</option>
-				    <option value="3">Three</option>
-				  </select>
+				        <div class="form-group">
+                  <select class="custom-select" id="inputGroupSelect01" name="product_category_id">
+        				    <option >Choose...</option>
+                    @foreach($categories as $category)
+        				    <option value="{{$category->id}}" {{ old('product_category_id', $product->product_category_id ?? '') == $category->id ? "selected" : '' }} >{{$category->name}}</option>
+                    @endforeach
+        				  </select>
                 </div>
-				<div class="form-group">
-                  <input type="text" class="form-control form-control-user" id="" placeholder="Price" name="price">
+				        <div class="form-group">
+                  <input type="text" class="form-control form-control-user" id="" placeholder="Price" name="price" value="{{ old('price', $product->price ?? '') }}">
                 </div>
-
+                <img src="{{url($product->image ?? '')}}" width="200">
                 <div class="form-group">
                   <input type="file" id="" placeholder="Image" name="image">
                 </div>
                 <div class="form-group">
-					<textarea rows = "5" cols = "50" class="form-control form-control-user" id="" name = "content">
-						Content
-					</textarea>
+                <textarea name="content" id="" cols="30" rows="10" class="form-control form-control-user">{{ old('content', $product->content ?? '') }}</textarea>
                 </div>
-                <a href="login.html" class="btn btn-primary btn-user btn-block">
-                  Create
-                </a>
+                <button class="button" type="submit">{{isset($product->id) ? 'Update' : 'Create' }}</button>
               </form>
             </div>
           </div>

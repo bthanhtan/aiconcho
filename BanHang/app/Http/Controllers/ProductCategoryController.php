@@ -42,6 +42,7 @@ class ProductCategoryController extends Controller
         $request->validate($rule);
         $category = $request->all();
         ProductCategory::create($category);
+        return redirect()->route('category.index');
     }
 
     /**
