@@ -22,11 +22,18 @@ Route::group(['prefix'=>'user','as'=>'user.'], function(){
     Route::get('/shop', function () {
         return view('user.shop');
     });
-    Route::get('/create', 'ProductCategoryController@create')->name('create');
-    Route::post('/store', 'ProductCategoryController@store')->name('store');
-    Route::get('/edit/{id}', 'ProductCategoryController@edit')->name('edit');
-    Route::put('/update/{id}', 'ProductCategoryController@update')->name('update');
-    Route::delete('/delete/{id}', 'ProductCategoryController@destroy')->name('delete');
+    Route::get('/blog', function () {
+        return view('user.blog');
+    });
+    Route::get('/about', function () {
+        return view('user.about');
+    });
+    Route::get('/contact', function () {
+        return view('user.contact');
+    });
+    Route::get('/cart', function () {
+        return view('user.cart');
+    });
 });
 
 
