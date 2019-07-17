@@ -16,7 +16,7 @@ class ProductController extends Controller
     public function index()
     {
        $products = Product::select()->get();
-        return view('product.list',['product'=>$products]);
+        return view('admin.product.list',['product'=>$products]);
     }
 
     /**
@@ -27,7 +27,7 @@ class ProductController extends Controller
     public function create()
     {
         $categories = ProductCategory::select()->get();
-        return view('product.form',['categories'=>$categories]);
+        return view('admin.product.form',['categories'=>$categories]);
     }
 
     /**
@@ -80,7 +80,7 @@ class ProductController extends Controller
     {
         $categories = ProductCategory::select()->get();
         $product = Product::find($id);
-        return view('product.form',[ 'product' => $product,'categories'=>$categories]);
+        return view('admin.product.form',[ 'product' => $product,'categories'=>$categories]);
     }
 
     /**
@@ -103,7 +103,7 @@ class ProductController extends Controller
         $data_update['image'] = $this->uploadImage($request->image);
         $product = Product::find($id);
         $product->update($data_update);
-        return redirect()->route('product.index');
+        return redirect()->route('admin.product.index');
     }
 
     /**

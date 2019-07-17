@@ -42,7 +42,7 @@ class ProductCategoryController extends Controller
         $request->validate($rule);
         $category = $request->all();
         ProductCategory::create($category);
-        return redirect()->route('admin.product_categories.index');
+        return redirect()->route('category.index');
     }
 
     /**
@@ -83,7 +83,7 @@ class ProductCategoryController extends Controller
         $request->validate($rule);
         $category = ProductCategory::find($id);
         $category->update($request->all());
-        return redirect()->route('admin.category.index');
+        return redirect()->route('category.index');
     }
 
     /**
@@ -96,6 +96,6 @@ class ProductCategoryController extends Controller
     {
         $category = ProductCategory::find($id);
         $category->delete();
-        return redirect()->route('admin.category.index');
+        return redirect()->route('category.index');
     }
 }

@@ -19,21 +19,24 @@ Route::get('/', function () {
 });
 
 Route::group(['prefix'=>'user','as'=>'user.'], function(){
+    Route::get('/index', function () {
+        return view('user.index');
+    })->name('index');
     Route::get('/shop', function () {
         return view('user.shop');
-    });
+    })->name('shop');
     Route::get('/blog', function () {
         return view('user.blog');
-    });
+    })->name('blog');
     Route::get('/about', function () {
         return view('user.about');
-    });
+    })->name('about');
     Route::get('/contact', function () {
         return view('user.contact');
-    });
+    })->name('contact');
     Route::get('/cart', function () {
         return view('user.cart');
-    });
+    })->name('cart');
 });
 
 

@@ -56,7 +56,9 @@
 
 	</head>
 	<body>
-		
+	<?php 
+		$local_link = "http://localhost/Laravel/BanHang/New%20folder/aiconcho/BanHang/public/";
+	?>
 	<div class="colorlib-loader"></div>
 
 	<div id="page">
@@ -65,13 +67,13 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-xs-2">
-							<div id="colorlib-logo"><a href="{{ url('user/index.html') }}">Store</a></div>
+							<div id="colorlib-logo"><a href="{{route('user.index')}}">Store</a></div>
 						</div>
 						<div class="col-xs-10 text-right menu-1">
 							<ul>
-								<li class="active"><a href="{{ url('user/index.html') }}">Home</a></li>
+								<li class="active"><a href="{{route('user.index')}}">Home</a></li>
 								<li class="has-dropdown">
-									<a href="{{ url('user/shop.html') }}">Shop</a>
+									<a href="<?php echo($local_link.'user/shop') ?>">Shop</a>
 									<ul class="dropdown">
 										<li><a href="{{ url('user/product-detail.html') }}">Product Detail</a></li>
 										<li><a href="{{ url('user/cart.html') }}">Shipping Cart</a></li>
@@ -80,10 +82,10 @@
 										<li><a href="{{ url('user/add-to-wishlist.html') }}">Wishlist</a></li>
 									</ul>
 								</li>
-								<li><a href="{{ url('user/blog.html') }}">Blog</a></li>
-								<li><a href="{{ url('user/about.html') }}">About</a></li>
-								<li><a href="{{ url('user/contact.html') }}">Contact</a></li>
-								<li><a href="{{ url('user/cart.html') }}"><i class="icon-shopping-cart"></i> Cart [0]</a></li>
+								<li><a href="{{route('user.blog')}}">Blog</a></li>
+								<li><a href="{{route('user.about')}}">About</a></li>
+								<li><a href="{{route('user.contact')}}">Contact</a></li>
+								<li><a href="{{route('user.cart')}}"><i class="icon-shopping-cart"></i> Cart [0]</a></li>
 							</ul>
 						</div>
 					</div>

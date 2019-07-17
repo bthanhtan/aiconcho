@@ -1,5 +1,4 @@
 @extends('user.user_master')
-@extends('user.user_master')
 
 @section('title', 'shop')
 
@@ -25,7 +24,7 @@
     </div>
     </aside>
 
-    <div id="colorlib-contact">
+<div id="colorlib-contact">
     <div class="container">
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
@@ -88,7 +87,7 @@
             </div>
         </div>
     </div>
-    </div>
+</div>
 
     <div id="map" class="colorlib-map"></div>
 @stop
