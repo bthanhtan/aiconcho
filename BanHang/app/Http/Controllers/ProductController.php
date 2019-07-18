@@ -16,7 +16,7 @@ class ProductController extends Controller
     public function index()
     {
        $products = Product::select()->get();
-        return view('admin.product.list',['product'=>$products]);
+        return view('admin.product.list',['products'=>$products]);
     }
 
     /**

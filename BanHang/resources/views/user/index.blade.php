@@ -1,6 +1,6 @@
-@extends('user.user_master')
+@extends('user.user_master',[ 'name_page' => 'home'])
 
-@section('title', 'shop')
+@section('title', 'home')
 
 
 @section('content')

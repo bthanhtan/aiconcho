@@ -22,9 +22,8 @@ Route::group(['prefix'=>'user','as'=>'user.'], function(){
     Route::get('/index', function () {
         return view('user.index');
     })->name('index');
-    Route::get('/shop', function () {
-        return view('user.shop');
-    })->name('shop');
+    Route::get('/shop', 'User_ShopController@index')->name('shop');
+    Route::get('/product_detail/{id}', 'User_ShopController@product_detail')->name('product_detail');
     Route::get('/blog', function () {
         return view('user.blog');
     })->name('blog');

@@ -1,28 +1,9 @@
-@extends('user.user_master')
+@extends('user.user_master',[ 'name_page' => 'contact'])
 
-@section('title', 'shop')
+@section('title', 'contact')
 
 
 @section('content')
-<aside id="colorlib-hero" class="breadcrumbs">
-    <div class="flexslider">
-        <ul class="slides">
-        <li style="background-image: url(images/cover-img-1.jpg);">
-            <div class="overlay"></div>
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
-                        <div class="slider-text-inner text-center">
-                            <h1>Contact</h1>
-                            <h2 class="bread"><span><a href="index.html">Home</a></span> <span>Contact</span></h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </li>
-        </ul>
-    </div>
-    </aside>
 
 <div id="colorlib-contact">
     <div class="container">

@@ -26,7 +26,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    @foreach($product as $key => $product)
+                    @foreach($products as $key => $product)
                     <tr>
                       <td>{{$key + 1}}</td>
                       <td>{{$product->name}}</td>
