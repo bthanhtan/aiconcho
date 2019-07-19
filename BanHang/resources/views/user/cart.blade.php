@@ -49,11 +49,10 @@
                 @foreach ($Carts as $Cart)
                 <div class="product-cart">
                     <div class="one-forth">
-                        <div class="product-img" style="background-image: url(images/item-6.jpg);">
-							
+                        <div class="product-img">
+                        <img src="{{url($Cart->options->image)}}" width="100" alt="">
                         </div>
                         <div class="display-tc">
-                            <h3>{{$Cart->options->image}}</h3>
                             <h3>{{$Cart->name}}</h3>
                         </div>
                     </div>

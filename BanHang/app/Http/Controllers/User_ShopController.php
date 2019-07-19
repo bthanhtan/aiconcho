@@ -34,7 +34,7 @@ class User_ShopController extends Controller
         return response()->json($b);
     }
     public function shop_show_cart()
-    {
+    {   
         $Carts = Cart::content();
         return view('user.cart',['Carts'=>$Carts]);
     }
