@@ -18,7 +18,7 @@
                                 <p class="tag"><span class="new">New</span></p>
                                 <div class="cart">
                                     <p>
-                                        <span class="addtocart"><a href="cart.html"><i class="icon-shopping-cart"></i></a></span> 
+                                        <span class="addtocart"><a><i onclick="cart_ajax({{$product->id}})" class="icon-shopping-cart"></i></a></span> 
                                         <span><a href="{{route('user.product_detail',['id'=>$product->id])}}"><i class="icon-eye"></i></a></span> 
                                         <span><a href="#"><i class="icon-heart3"></i></a></span>
                                         <span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
@@ -194,4 +194,8 @@
         </div>
     </div>
 </div>
+@stop
+@section('main_js')
+<!-- Main -->
+<script type="text/javascript" src="{{ url('user/js/cart_shop_ajax.js') }}"></script>
 @stop

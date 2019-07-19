@@ -5,6 +5,8 @@
 
 @section('content')
 
+
+
 <div class="colorlib-shop">
     <div class="container">
         <div class="row row-pb-md">
@@ -44,58 +46,30 @@
                         <span>Remove</span>
                     </div>
                 </div>
+                @foreach ($Carts as $Cart)
                 <div class="product-cart">
                     <div class="one-forth">
                         <div class="product-img" style="background-image: url(images/item-6.jpg);">
+							
                         </div>
                         <div class="display-tc">
-                            <h3>Product Name</h3>
+                            <h3>{{$Cart->options->image}}</h3>
+                            <h3>{{$Cart->name}}</h3>
                         </div>
                     </div>
                     <div class="one-eight text-center">
                         <div class="display-tc">
-                            <span class="price">$68.00</span>
+                            <span class="price">{{$Cart->price}}</span>
                         </div>
                     </div>
                     <div class="one-eight text-center">
                         <div class="display-tc">
-                            <input type="text" id="quantity" name="quantity" class="form-control input-number text-center" value="1" min="1" max="100">
+                        <h3>{{$Cart->qty}}</h3>
                         </div>
                     </div>
                     <div class="one-eight text-center">
                         <div class="display-tc">
-                            <span class="price">$120.00</span>
-                        </div>
-                    </div>
-                    <div class="one-eight text-center">
-                        <div class="display-tc">
-                            <a href="#" class="closed"></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="product-cart">
-                    <div class="one-forth">
-                        <div class="product-img" style="background-image: url(images/item-7.jpg);">
-                        </div>
-                        <div class="display-tc">
-                            <h3>Product Name</h3>
-                        </div>
-                    </div>
-                    <div class="one-eight text-center">
-                        <div class="display-tc">
-                            <span class="price">$68.00</span>
-                        </div>
-                    </div>
-                    <div class="one-eight text-center">
-                        <div class="display-tc">
-                            <form action="#">
-                                <input type="text" name="quantity" class="form-control input-number text-center" value="1" min="1" max="100">
-                            </form>
-                        </div>
-                    </div>
-                    <div class="one-eight text-center">
-                        <div class="display-tc">
-                            <span class="price">$120.00</span>
+                            <span class="price">tổng chưa làm</span>
                         </div>
                     </div>
                     <div class="one-eight text-center">
@@ -104,35 +78,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="product-cart">
-                    <div class="one-forth">
-                        <div class="product-img" style="background-image: url(images/item-8.jpg);">
-                        </div>
-                        <div class="display-tc">
-                            <h3>Product Name</h3>
-                        </div>
-                    </div>
-                    <div class="one-eight text-center">
-                        <div class="display-tc">
-                            <span class="price">$68.00</span>
-                        </div>
-                    </div>
-                    <div class="one-eight text-center">
-                        <div class="display-tc">
-                            <input type="text" id="quantity" name="quantity" class="form-control input-number text-center" value="1" min="1" max="100">
-                        </div>
-                    </div>
-                    <div class="one-eight text-center">
-                        <div class="display-tc">
-                            <span class="price">$120.00</span>
-                        </div>
-                    </div>
-                    <div class="one-eight text-center">
-                        <div class="display-tc">
-                            <a href="#" class="closed"></a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
         <div class="row">

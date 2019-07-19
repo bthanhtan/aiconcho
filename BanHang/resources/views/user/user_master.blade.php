@@ -274,6 +274,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<script src="{{ url('user/js/jquery.stellar.min.js') }}"></script>
 	<!-- Main -->
 	<script src="{{ url('user/js/main.js') }}"></script>
+	
 	@yield('main_js')
 	</body>
 </html>

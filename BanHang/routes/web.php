@@ -23,6 +23,8 @@ Route::group(['prefix'=>'user','as'=>'user.'], function(){
         return view('user.index');
     })->name('index');
     Route::get('/shop', 'User_ShopController@index')->name('shop');
+    Route::get('/shop/add/{id}', 'User_ShopController@shop_add_cart')->name('shop_add_cart');
+    Route::get('/cart', 'User_ShopController@shop_show_cart')->name('cart');
     Route::get('/product_detail/{id}', 'User_ShopController@product_detail')->name('product_detail');
     Route::get('/blog', function () {
         return view('user.blog');
@@ -33,9 +35,9 @@ Route::group(['prefix'=>'user','as'=>'user.'], function(){
     Route::get('/contact', function () {
         return view('user.contact');
     })->name('contact');
-    Route::get('/cart', function () {
-        return view('user.cart');
-    })->name('cart');
+    // Route::get('/cart', function () {
+    //     return view('user.cart');
+    // })->name('cart');
 });
 
 

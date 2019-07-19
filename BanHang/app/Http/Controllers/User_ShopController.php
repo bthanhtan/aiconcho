@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Gloudemans\Shoppingcart\Contracts\Buyable;
 use Illuminate\Http\Request;
 use App\ProductCategory;
 use App\Product;
-
+use Cart;
 class User_ShopController extends Controller
 {
     /**
@@ -21,7 +22,21 @@ class User_ShopController extends Controller
     public function product_detail($id)
     {
         $product = Product::find($id);
+        // dd($product);
+        $a = Cart::add(['id' => $product->id, 'name' => $product->name, 'qty' => 1, 'price' => $product->price, 'weight' => 550, 'options' => ['image' => $product->image]]);
         return view('user.product_detail',['product'=>$product]);
+    }
+    public function shop_add_cart($id)
+    {
+        $product = Product::find($id);
+        $a = Cart::add(['id' => $product->id, 'name' => $product->name, 'qty' => 1, 'price' => $product->price, 'weight' => 550, 'options' => ['image' => $product->image]]);
+        $b = Cart::content();
+        return response()->json($b);
+    }
+    public function shop_show_cart()
+    {
+        $Carts = Cart::content();
+        return view('user.cart',['Carts'=>$Carts]);
     }
 
     /**
@@ -65,7 +80,7 @@ class User_ShopController extends Controller
     public function edit($id)
     {
         //
-    }
+}
 
     /**
      * Update the specified resource in storage.
