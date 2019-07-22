@@ -85,7 +85,7 @@
 								<li><a href="{{route('user.blog')}}">Blog</a></li>
 								<li><a href="{{route('user.about')}}">About</a></li>
 								<li><a href="{{route('user.contact')}}">Contact</a></li>
-								<li><a href="{{route('user.cart')}}"><i class="icon-shopping-cart"></i> Cart [0]</a></li>
+								<li><a href="{{route('user.cart')}}"><i class="icon-shopping-cart"></i> Cart [<span class="count_cart">0</span>]</a></li>
 							</ul>
 						</div>
 					</div>

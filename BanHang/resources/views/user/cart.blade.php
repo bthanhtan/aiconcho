@@ -46,7 +46,7 @@
                         <span>Remove</span>
                     </div>
                 </div>
-                @foreach ($Carts as $Cart)
+                @foreach ($Carts as $Cart) 
                 <div class="product-cart">
                     <div class="one-forth">
                         <div class="product-img">
@@ -68,12 +68,12 @@
                     </div>
                     <div class="one-eight text-center">
                         <div class="display-tc">
-                            <span class="price">tổng chưa làm</span>
+                            <span class="price">{{$Cart->total}}</span>
                         </div>
                     </div>
-                    <div class="one-eight text-center">
+                    <div class="one-eight text-center" onclick="this.parentElement.style.display = 'none';">
                         <div class="display-tc">
-                            <a href="#" class="closed"></a>
+                            <div class="closed" onclick="delete_cart_ajax('{{$Cart->rowId}}')"></div>
                         </div>
                     </div>
                 </div>
@@ -229,4 +229,9 @@
         </div>
     </div>
 </div>
+@stop
+
+@section('main_js')
+<!-- Main -->
+<script type="text/javascript" src="{{ url('user/js/cart_shop_ajax.js') }}"></script>
 @stop

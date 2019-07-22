@@ -29,16 +29,29 @@ class User_ShopController extends Controller
     public function shop_add_cart($id)
     {
         $product = Product::find($id);
-        $a = Cart::add(['id' => $product->id, 'name' => $product->name, 'qty' => 1, 'price' => $product->price, 'weight' => 550, 'options' => ['image' => $product->image]]);
+        Cart::add(['id' => $product->id, 'name' => $product->name, 'qty' => 1, 'price' => $product->price, 'weight' => 550, 'options' => ['image' => $product->image]]);
+        $a = Cart::count();
         $b = Cart::content();
+        return response($a);
         return response()->json($b);
     }
+
     public function shop_show_cart()
     {   
         $Carts = Cart::content();
         return view('user.cart',['Carts'=>$Carts]);
     }
-
+    public function cart_count()
+    {   
+        $a = Cart::count();
+        dd($a);
+    }
+    public function shop_delete_cart($id)
+    {   
+        Cart::remove($id);
+    }
+    
+    
     /**
      * Show the form for creating a new resource.
      *
