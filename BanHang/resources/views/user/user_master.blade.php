@@ -56,9 +56,6 @@
 
 	</head>
 	<body>
-	<?php 
-		$local_link = "http://localhost/Laravel/BanHang/New%20folder/aiconcho/BanHang/public/";
-	?>
 	<div class="colorlib-loader"></div>
 
 	<div id="page">
@@ -73,7 +70,7 @@
 							<ul>
 								<li class="active"><a href="{{route('user.index')}}">Home</a></li>
 								<li class="has-dropdown">
-									<a href="<?php echo($local_link.'user/shop') ?>">Shop</a>
+									<a href="{{route('user.shop')}}">Shop</a>
 									<ul class="dropdown">
 										<li><a href="{{ url('user/product-detail.html') }}">Product Detail</a></li>
 										<li><a href="{{ url('user/cart.html') }}">Shipping Cart</a></li>
@@ -85,7 +82,7 @@
 								<li><a href="{{route('user.blog')}}">Blog</a></li>
 								<li><a href="{{route('user.about')}}">About</a></li>
 								<li><a href="{{route('user.contact')}}">Contact</a></li>
-								<li><a href="{{route('user.cart')}}"><i class="icon-shopping-cart"></i> Cart [<span class="count_cart">0</span>]</a></li>
+								<li><a href="{{route('user.cart')}}"><i class="icon-shopping-cart"></i> Cart [<span class="count_cart">{{Cart::count()}}</span>]</a></li>
 							</ul>
 						</div>
 					</div>

@@ -71,9 +71,9 @@
                             <span class="price">{{$Cart->total}}</span>
                         </div>
                     </div>
-                    <div class="one-eight text-center" onclick="this.parentElement.style.display = 'none';">
+                    <div class="one-eight text-center">
                         <div class="display-tc">
-                            <div class="closed" onclick="delete_cart_ajax('{{$Cart->rowId}}')"></div>
+                            <div class="closed button-delete"  onclick="delete_cart_ajax('{{$Cart->rowId}}',this)"></div>
                         </div>
                     </div>
                 </div>

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Gloudemans\Shoppingcart\Contracts\Buyable;
 use Illuminate\Http\Request;
 use App\ProductCategory;
 use App\Product;
 use Cart;
+
 class User_ShopController extends Controller
 {
     /**
@@ -23,7 +23,8 @@ class User_ShopController extends Controller
     {
         $product = Product::find($id);
         // dd($product);
-        $a = Cart::add(['id' => $product->id, 'name' => $product->name, 'qty' => 1, 'price' => $product->price, 'weight' => 550, 'options' => ['image' => $product->image]]);
+        Cart::destroy();
+        // $a = Cart::add(['id' => $product->id, 'name' => $product->name, 'qty' => 1, 'price' => $product->price, 'weight' => 550, 'options' => ['image' => $product->image]]);
         return view('user.product_detail',['product'=>$product]);
     }
     public function shop_add_cart($id)
