@@ -3,7 +3,7 @@
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Store Template</title>
+	<title>App Name - @yield('title')</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="" />
 	<meta name="keywords" content="" />
@@ -56,7 +56,6 @@
 
 	</head>
 	<body>
-		
 	<div class="colorlib-loader"></div>
 
 	<div id="page">
@@ -65,13 +64,13 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-xs-2">
-							<div id="colorlib-logo"><a href="{{ url('user/index.html') }}">Store</a></div>
+							<div id="colorlib-logo"><a href="{{route('user.index')}}">Store</a></div>
 						</div>
 						<div class="col-xs-10 text-right menu-1">
 							<ul>
-								<li class="active"><a href="{{ url('user/index.html') }}">Home</a></li>
+								<li class="active"><a href="{{route('user.index')}}">Home</a></li>
 								<li class="has-dropdown">
-									<a href="{{ url('user/shop.html') }}">Shop</a>
+									<a href="{{route('user.shop')}}">Shop</a>
 									<ul class="dropdown">
 										<li><a href="{{ url('user/product-detail.html') }}">Product Detail</a></li>
 										<li><a href="{{ url('user/cart.html') }}">Shipping Cart</a></li>
@@ -80,69 +79,60 @@
 										<li><a href="{{ url('user/add-to-wishlist.html') }}">Wishlist</a></li>
 									</ul>
 								</li>
-								<li><a href="{{ url('user/blog.html') }}">Blog</a></li>
-								<li><a href="{{ url('user/about.html') }}">About</a></li>
-								<li><a href="{{ url('user/contact.html') }}">Contact</a></li>
-								<li><a href="{{ url('user/cart.html') }}"><i class="icon-shopping-cart"></i> Cart [0]</a></li>
+								<li><a href="{{route('user.blog')}}">Blog</a></li>
+								<li><a href="{{route('user.about')}}">About</a></li>
+								<li><a href="{{route('user.contact')}}">Contact</a></li>
+								<li class="btn-lg" data-toggle="modal" data-target="#myModal"><a href="{{route('user.cart')}}">
+									<i class="icon-shopping-cart"></i> Cart [<span class="count_cart">{{Cart::count()}}</span>]</a>
+								</li>
 							</ul>
 						</div>
 					</div>
 				</div>
 			</div>
 		</nav>
-		<aside id="colorlib-hero">
+
+		<aside id="colorlib-hero" class="breadcrumbs">
 			<div class="flexslider">
 				<ul class="slides">
-				
-			   	<li style="background-image: url({{ url('user/images/img_bg_1.jpg') }});">
+			   	<li style="background-image: url({{ url('user/images/cover-img-1.jpg') }});">
 			   		<div class="overlay"></div>
 			   		<div class="container-fluid">
 			   			<div class="row">
-				   			<div class="col-md-6 col-md-offset-3 col-md-pull-2 col-sm-12 col-xs-12 slider-text">
-				   				<div class="slider-text-inner">
-				   					<div class="desc">
-					   					<h1 class="head-1">Men's</h1>
-					   					<h2 class="head-2">Jeans</h2>
-					   					<h2 class="head-3">Collection</h2>
-					   					<p class="category"><span>New stylish shirts, pants &amp; Accessories</span></p>
-					   					<p><a href="{{ url('user/#" class="btn btn-primary') }}">Shop Collection</a></p>
-				   					</div>
-				   				</div>
-				   			</div>
-				   		</div>
-			   		</div>
-			   	</li>
-			   	<li style="background-image: url({{ url('user/images/img_bg_2.jpg') }});">
-			   		<div class="overlay"></div>
-			   		<div class="container-fluid">
-			   			<div class="row">
-				   			<div class="col-md-6 col-md-offset-3 col-md-pull-2 col-sm-12 col-xs-12 slider-text">
-				   				<div class="slider-text-inner">
-				   					<div class="desc">
-					   					<h1 class="head-1">Huge</h1>
-					   					<h2 class="head-2">Sale</h2>
-					   					<h2 class="head-3">45% off</h2>
-					   					<p class="category"><span>New stylish shirts, pants &amp; Accessories</span></p>
-					   					<p><a href="{{ url('user/#" class="btn btn-primary') }}">Shop Collection</a></p>
-				   					</div>
-				   				</div>
-				   			</div>
-				   		</div>
-			   		</div>
-			   	</li>
-			   	<li style="background-image: url({{ url('user/images/img_bg_3.jpg') }});">
-			   		<div class="overlay"></div>
-			   		<div class="container-fluid">
-			   			<div class="row">
-				   			<div class="col-md-6 col-md-offset-3 col-md-push-3 col-sm-12 col-xs-12 slider-text">
-				   				<div class="slider-text-inner">
-				   					<div class="desc">
-					   					<h1 class="head-1">New</h1>
-					   					<h2 class="head-2">Arrival</h2>
-					   					<h2 class="head-3">up to 30% off</h2>
-					   					<p class="category"><span>New stylish shirts, pants &amp; Accessories</span></p>
-					   					<p><a href="{{ url('user/#" class="btn btn-primary') }}">Shop Collection</a></p>
-				   					</div>
+				   			<div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
+				   				<div class="slider-text-inner text-center">
+				   					<h1>Product Detail</h1>
+				   					<h2 class="bread"><span><a href="index.html">Home</a></span> <span><a href="shop.html">Product</a></span> 
+									   <span>
+									   <?php 
+										   switch ($name_page) {
+											   case "home":
+												   echo "";
+												   break;
+											   case "shop":
+												   echo "shop";
+												   break;
+											   case "blog":
+												   echo "blog";
+												   break;
+											   case "blog":
+												   echo "blog";
+												   break;
+											   case "about":
+												   echo "about";
+												   break;
+											   case "contact":
+												   echo "contact";
+												   break;
+											   case "cart":
+												   echo "cart";
+												   break;
+											   default:
+												   echo "page gì đây ?";
+										   }
+									   ?>
+									   </span>
+									</h2>
 				   				</div>
 				   			</div>
 				   		</div>
@@ -151,416 +141,8 @@
 			  	</ul>
 		  	</div>
 		</aside>
-		<div id="colorlib-featured-product">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6">
-						<a href="{{ url('user/shop.html') }}" class="f-product-1" style="background-image: url({{ url('user/images/item-1.jpg') }});">
-							<div class="desc">
-								<h2>Fahion <br>for <br>men</h2>
-							</div>
-						</a>
-					</div>
-					<div class="col-md-6">
-						<div class="row">
-							<div class="col-md-6">
-								<a href="{{ url('user/') }}" class="f-product-2" style="background-image: url({{ url('user/images/item-2.jpg') }});">
-									<div class="desc">
-										<h2>New <br>Arrival <br>Dress</h2>
-									</div>
-								</a>
-							</div>
-							<div class="col-md-6">
-								<a href="{{ url('user/') }}" class="f-product-2" style="background-image: url({{ url('user/images/item-4.jpg') }});">
-									<div class="desc">
-										<h2>Sale <br>20% <br>off</h2>
-									</div>
-								</a>
-							</div>
-							<div class="col-md-12">
-								<a href="{{ url('user/') }}" class="f-product-2" style="background-image: url({{ url('user/images/item-3.jpg') }});">
-									<div class="desc">
-										<h2>Shoes <br>for <br>men</h2>
-									</div>
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="colorlib-shop">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6 col-md-offset-3 text-center colorlib-heading">
-						<h2><span>New Arrival</span></h2>
-						<p>We love to tell our successful far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-3 text-center">
-						<div class="product-entry">
-							<div class="product-img" style="background-image: url({{ url('user/images/item-5.jpg') }});">>
-								<p class="tag"><span class="new">New</span></p>
-								<div class="cart">
-									<p>
-										<span class="addtocart"><a href="{{ url('user/cart.html') }}"><i class="icon-shopping-cart"></i></a></span> 
-										<span><a href="{{ url('user/product-detail.html') }}"><i class="icon-eye"></i></a></span> 
-										<span><a href="{{ url('user/#') }}"><i class="icon-heart3"></i></a></span>
-										<span><a href="{{ url('user/add-to-wishlist.html') }}"><i class="icon-bar-chart"></i></a></span>
-									</p>
-								</div>
-							</div>
-							<div class="desc">
-								<h3><a href="{{ url('user/shop.html') }}">Floral Dress</a></h3>
-								<p class="price"><span>$300.00</span></p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 text-center">
-						<div class="product-entry">
-							<div class="product-img" style="background-image: url({{ url('user/images/item-6.jpg') }});">
-								<p class="tag"><span class="new">New</span></p>
-								<div class="cart">
-									<p>
-										<span class="addtocart"><a href="{{ url('user/cart.html') }}"><i class="icon-shopping-cart"></i></a></span> 
-										<span><a href="{{ url('user/product-detail.html') }}"><i class="icon-eye"></i></a></span> 
-										<span><a href="{{ url('user/#') }}"><i class="icon-heart3"></i></a></span>
-										<span><a href="{{ url('user/add-to-wishlist.html') }}"><i class="icon-bar-chart"></i></a></span>
-									</p>
-								</div>
-							</div>
-							<div class="desc">
-								<h3><a href="{{ url('user/shop.html') }}">Floral Dress</a></h3>
-								<p class="price"><span>$300.00</span></p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 text-center">
-						<div class="product-entry">
-							<div class="product-img" style="background-image: url({{ url('user/images/item-7.jpg') }});">>
-								<p class="tag"><span class="new">New</span></p>
-								<div class="cart">
-									<p>
-										<span class="addtocart"><a href="{{ url('user/cart.html') }}"><i class="icon-shopping-cart"></i></a></span> 
-										<span><a href="{{ url('user/product-detail.html') }}"><i class="icon-eye"></i></a></span> 
-										<span><a href="{{ url('user/#') }}"><i class="icon-heart3"></i></a></span>
-										<span><a href="{{ url('user/add-to-wishlist.html') }}"><i class="icon-bar-chart"></i></a></span>
-									</p>
-								</div>
-							</div>
-							<div class="desc">
-								<h3><a href="{{ url('user/shop.html') }}">Floral Dress</a></h3>
-								<p class="price"><span>$300.00</span></p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 text-center">
-						<div class="product-entry">
-							<div class="product-img" style="background-image: url({{ url('user/images/item-8.jpg') }});">
-								<p class="tag"><span class="new">New</span></p>
-								<div class="cart">
-									<p>
-										<span class="addtocart"><a href="{{ url('user/cart.html') }}"><i class="icon-shopping-cart"></i></a></span> 
-										<span><a href="{{ url('user/product-detail.html') }}"><i class="icon-eye"></i></a></span> 
-										<span><a href="{{ url('user/#') }}"><i class="icon-heart3"></i></a></span>
-										<span><a href="{{ url('user/add-to-wishlist.html') }}"><i class="icon-bar-chart"></i></a></span>
-									</p>
-								</div>
-							</div>
-							<div class="desc">
-								<h3><a href="{{ url('user/shop.html') }}">Floral Dress</a></h3>
-								<p class="price"><span>$300.00</span></p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div id="colorlib-intro" class="colorlib-intro" style="background-image: url({{ url('user/images/cover-img-1.jpg') }});" data-stellar-background-ratio="0.5">
-			<div class="overlay"></div>
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6">
-						<div class="intro-desc">
-							<div class="text-salebox">
-								<div class="text-lefts">
-									<div class="sale-box">
-										<div class="sale-box-top">
-											<h2 class="number">45</h2>
-											<span class="sup-1">%</span>
-											<span class="sup-2">Off</span>
-										</div>
-										<h2 class="text-sale">Sale</h2>
-									</div>
-								</div>
-								<div class="text-rights">
-									<h3 class="title">Just hurry up limited offer!</h3>
-									<p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-									<p><a href="{{ url('user/shop.html" class="btn btn-primary') }}">Shop Now</a> <a href="{{ url('user/#" class="btn btn-primary btn-outline') }}">Read more</a></p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="colorlib-shop">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6 col-md-offset-3 text-center colorlib-heading">
-						<h2><span>Our Products</span></h2>
-						<p>We love to tell our successful far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-3 text-center">
-						<div class="product-entry">
-							<div class="product-img" style="background-image: url({{ url('user/images/item-9.jpg') }});">
-								<p class="tag"><span class="sale">Sale</span></p>
-								<div class="cart">
-									<p>
-										<span class="addtocart"><a href="{{ url('user/cart.html') }}"><i class="icon-shopping-cart"></i></a></span> 
-										<span><a href="{{ url('user/product-detail.html') }}"><i class="icon-eye"></i></a></span> 
-										<span><a href="{{ url('user/#') }}"><i class="icon-heart3"></i></a></span>
-										<span><a href="{{ url('user/add-to-wishlist.html') }}"><i class="icon-bar-chart"></i></a></span>
-									</p>
-								</div>
-							</div>
-							<div class="desc">
-								<h3><a href="{{ url('user/shop.html') }}">Floral Dress</a></h3>
-								<p class="price"><span>$199.00</span> <span class="sale">$300.00</span> </p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 text-center">
-						<div class="product-entry">
-							<div class="product-img" style="background-image: url({{ url('user/images/item-10.jpg') }});">
-								<p class="tag"><span class="new">New</span></p>
-								<div class="cart">
-									<p>
-										<span class="addtocart"><a href="{{ url('user/cart.html') }}"><i class="icon-shopping-cart"></i></a></span> 
-										<span><a href="{{ url('user/product-detail.html') }}"><i class="icon-eye"></i></a></span> 
-										<span><a href="{{ url('user/#') }}"><i class="icon-heart3"></i></a></span>
-										<span><a href="{{ url('user/add-to-wishlist.html') }}"><i class="icon-bar-chart"></i></a></span>
-									</p>
-								</div>
-							</div>
-							<div class="desc">
-								<h3><a href="{{ url('user/shop.html') }}">Floral Dress</a></h3>
-								<p class="price"><span>$300.00</span></p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 text-center">
-						<div class="product-entry">
-							<div class="product-img" style="background-image: url({{ url('user/images/item-11.jpg') }});">
-								<p class="tag"><span class="new">New</span></p>
-								<div class="cart">
-									<p>
-										<span class="addtocart"><a href="{{ url('user/cart.html') }}"><i class="icon-shopping-cart"></i></a></span> 
-										<span><a href="{{ url('user/product-detail.html') }}"><i class="icon-eye"></i></a></span> 
-										<span><a href="{{ url('user/#') }}"><i class="icon-heart3"></i></a></span>
-										<span><a href="{{ url('user/add-to-wishlist.html') }}"><i class="icon-bar-chart"></i></a></span>
-									</p>
-								</div>
-							</div>
-							<div class="desc">
-								<h3><a href="{{ url('user/shop.html') }}">Floral Dress</a></h3>
-								<p class="price"><span>$300.00</span></p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 text-center">
-						<div class="product-entry">
-							<div class="product-img" style="background-image: url({{ url('user/images/item-12.jpg') }});">
-								<p class="tag"><span class="new">New</span></p>
-								<div class="cart">
-									<p>
-										<span class="addtocart"><a href="{{ url('user/cart.html') }}"><i class="icon-shopping-cart"></i></a></span> 
-										<span><a href="{{ url('user/product-detail.html') }}"><i class="icon-eye"></i></a></span> 
-										<span><a href="{{ url('user/#') }}"><i class="icon-heart3"></i></a></span>
-										<span><a href="{{ url('user/add-to-wishlist.html') }}"><i class="icon-bar-chart"></i></a></span>
-									</p>
-								</div>
-							</div>
-							<div class="desc">
-								<h3><a href="{{ url('user/shop.html') }}">Floral Dress</a></h3>
-								<p class="price"><span>$300.00</span></p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 text-center">
-						<div class="product-entry">
-							<div class="product-img" style="background-image: url({{ url('user/images/item-13.jpg') }});">
-								<p class="tag"><span class="new">New</span></p>
-								<div class="cart">
-									<p>
-										<span class="addtocart"><a href="{{ url('user/cart.html') }}"><i class="icon-shopping-cart"></i></a></span> 
-										<span><a href="{{ url('user/product-detail.html') }}"><i class="icon-eye"></i></a></span> 
-										<span><a href="{{ url('user/#') }}"><i class="icon-heart3"></i></a></span>
-										<span><a href="{{ url('user/add-to-wishlist.html') }}"><i class="icon-bar-chart"></i></a></span>
-									</p>
-								</div>
-							</div>
-							<div class="desc">
-								<h3><a href="{{ url('user/shop.html') }}">Floral Dress</a></h3>
-								<p class="price"><span>$300.00</span></p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 text-center">
-						<div class="product-entry">
-							<div class="product-img" style="background-image: url({{ url('user/images/item-14.jpg') }});">
-								<p class="tag"><span class="new">New</span></p>
-								<div class="cart">
-									<p>
-										<span class="addtocart"><a href="{{ url('user/cart.html') }}"><i class="icon-shopping-cart"></i></a></span> 
-										<span><a href="{{ url('user/product-detail.html') }}"><i class="icon-eye"></i></a></span> 
-										<span><a href="{{ url('user/#') }}"><i class="icon-heart3"></i></a></span>
-										<span><a href="{{ url('user/add-to-wishlist.html') }}"><i class="icon-bar-chart"></i></a></span>
-									</p>
-								</div>
-							</div>
-							<div class="desc">
-								<h3><a href="{{ url('user/shop.html') }}">Floral Dress</a></h3>
-								<p class="price"><span>$300.00</span></p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 text-center">
-						<div class="product-entry">
-							<div class="product-img" style="background-image: url({{ url('user/images/item-15.jpg') }});">
-								<p class="tag"><span class="new">New</span></p>
-								<div class="cart">
-									<p>
-										<span class="addtocart"><a href="{{ url('user/cart.html') }}"><i class="icon-shopping-cart"></i></a></span> 
-										<span><a href="{{ url('user/product-detail.html') }}"><i class="icon-eye"></i></a></span> 
-										<span><a href="{{ url('user/#') }}"><i class="icon-heart3"></i></a></span>
-										<span><a href="{{ url('user/add-to-wishlist.html') }}"><i class="icon-bar-chart"></i></a></span>
-									</p>
-								</div>
-							</div>
-							<div class="desc">
-								<h3><a href="{{ url('user/shop.html') }}">Floral Dress</a></h3>
-								<p class="price"><span>$300.00</span></p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 text-center">
-						<div class="product-entry">
-							<div class="product-img" style="background-image: url({{ url('user/images/item-16.jpg') }});">
-								<p class="tag"><span class="new">New</span></p>
-								<div class="cart">
-									<p>
-										<span class="addtocart"><a href="{{ url('user/cart.html') }}"><i class="icon-shopping-cart"></i></a></span> 
-										<span><a href="{{ url('user/product-detail.html') }}"><i class="icon-eye"></i></a></span> 
-										<span><a href="{{ url('user/#') }}"><i class="icon-heart3"></i></a></span>
-										<span><a href="{{ url('user/add-to-wishlist.html') }}"><i class="icon-bar-chart"></i></a></span>
-									</p>
-								</div>
-							</div>
-							<div class="desc">
-								<h3><a href="{{ url('user/shop.html') }}">Floral Dress</a></h3>
-								<p class="price"><span>$300.00</span></p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div id="colorlib-testimony" class="colorlib-light-grey">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6 col-md-offset-3 text-center colorlib-heading">
-						<h2><span>Our Satisfied Customer says</span></h2>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-8 col-md-offset-2">						
-						<div class="owl-carousel2">
-							<div class="item">
-								<div class="testimony text-center">
-									<span class="img-user" style="background-image: url({{ url('user/images/person1.jpg') }});"></span>
-									<span class="user">Alysha Myers</span>
-									<small>Miami Florida, USA</small>
-									<blockquote>
-										<p>" A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-									</blockquote>
-								</div>
-							</div>
-							<div class="item">
-								<div class="testimony text-center">
-									<span class="img-user" style="background-image: url({{ url('user/images/person2.jpg') }});"></span>
-									<span class="user">James Fisher</span>
-									<small>New York, USA</small>
-									<blockquote>
-										<p>One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
-									</blockquote>
-								</div>
-							</div>
-							<div class="item">
-								<div class="testimony text-center">
-									<span class="img-user" style="background-image: url({{ url('user/images/person3.jpg') }});"></span>
-									<span class="user">Jacob Webb</span>
-									<small>Athens, Greece</small>
-									<blockquote>
-										<p>Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way.</p>
-									</blockquote>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>	
-			</div>
-		</div>
-
-		<div class="colorlib-blog">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-8 col-md-offset-2 text-center colorlib-heading">
-						<h2>Recent Blog</h2>
-						<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name</p>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-4">
-						<article class="article-entry">
-							<a href="{{ url('user/blog.html') }}" class="blog-img" style="background-image: url({{ url('user/images/blog-1.jpg') }});"></a>
-							<div class="desc">
-								<p class="meta"><span class="day">02</span><span class="month">Mar</span></p>
-								<p class="admin"><span>Posted by:</span> <span>Noah Henderson</span></p>
-								<h2><a href="{{ url('user/blog.html') }}">Openning Branches</a></h2>
-								<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life</p>
-							</div>
-						</article>
-					</div>
-					<div class="col-md-4">
-						<article class="article-entry">
-							<a href="{{ url('user/blog.html') }}" class="blog-img" style="background-image: url({{ url('user/images/blog-2.jpg') }});"></a>
-							<div class="desc">
-								<p class="meta"><span class="day">02</span><span class="month">Mar</span></p>
-								<p class="admin"><span>Posted by:</span> <span>Noah Henderson</span></p>
-								<h2><a href="{{ url('user/blog.html') }}">Openning Branches</a></h2>
-								<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life</p>
-							</div>
-						</article>
-					</div>
-					<div class="col-md-4">
-						<article class="article-entry">
-							<a href="{{ url('user/blog.html') }}" class="blog-img" style="background-image: url({{ url('user/images/blog-3.jpg') }});"></a>
-							<div class="desc">
-								<p class="meta"><span class="day">02</span><span class="month">Mar</span></p>
-								<p class="admin"><span>Posted by:</span> <span>Noah Henderson</span></p>
-								<h2><a href="{{ url('user/blog.html') }}">Openning Branches</a></h2>
-								<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life</p>
-							</div>
-						</article>
-					</div>
-				</div>
-			</div>
+		<div id="page">
+		@yield('content')
 		</div>
 		
 		<div id="colorlib-subscribe">
@@ -691,7 +273,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<script src="{{ url('user/js/jquery.stellar.min.js') }}"></script>
 	<!-- Main -->
 	<script src="{{ url('user/js/main.js') }}"></script>
-
+	
+	@yield('main_js')
 	</body>
 </html>
 

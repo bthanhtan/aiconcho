@@ -19,6 +19,7 @@ Route::get('/', function () {
 });
 
 Route::group(['prefix'=>'user','as'=>'user.'], function(){
+    // Route::get('/user_master', 'User_ShopController@user_master')->name('user_master');
     Route::get('/index', function () {
         return view('user.index');
     })->name('index');
@@ -26,6 +27,10 @@ Route::group(['prefix'=>'user','as'=>'user.'], function(){
     Route::get('/shop/add/{id}', 'User_ShopController@shop_add_cart')->name('shop_add_cart');
     Route::get('/cart', 'User_ShopController@shop_show_cart')->name('cart');
     Route::get('/cart/count', 'User_ShopController@cart_count')->name('cart_count');
+    Route::get('/cart/ordercomplete', 'User_ShopController@cart_ordercomplete')->name('cart_ordercomplete');
+    Route::get('/cart/checkout', 'User_ShopController@cart_checkout')->name('cart_checkout');
+    Route::post('/cart/db', 'User_ShopController@cart_db')->name('cart_db');
+    // Route::post('/cart/db_store', 'User_ShopController@cart_db_store')->name('cart_db_store');
     Route::get('/cart/{id}', 'User_ShopController@shop_delete_cart')->name('shop_delete_cart');
     Route::get('/product_detail/{id}', 'User_ShopController@product_detail')->name('product_detail');
     Route::get('/blog', function () {

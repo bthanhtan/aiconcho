@@ -12,4 +12,8 @@ class Product extends Model
     {
         return $this->belongsto('App\ProductCategory',"product_category_id");
     }
+    public function orderDetail()
+    {
+        return $this->hasMany('App\OrderDetail',"product_id");
+    }
 }

@@ -91,7 +91,7 @@
                                         <input type="text" name="quantity" class="form-control input-number" placeholder="Your Coupon Number...">
                                     </div>
                                     <div class="col-md-3">
-                                        <input type="submit" value="Apply Coupon" class="btn btn-primary">
+                                        <a href="{{route('user.cart_checkout')}}" class="btn btn-primary">Checkout</a>
                                     </div>
                                 </div>
                             </form>
