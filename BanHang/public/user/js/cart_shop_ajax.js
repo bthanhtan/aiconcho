@@ -7,28 +7,59 @@ function cart_ajax(id) {
         url: url,
         type: type,
         success: function(response) {
+            console.log(response);
             console.log(response.content);
             console.log(response.count);
 
             alert("đã thêm vào giỏ hàng.");
             var count_cart = response.count;
-            // json_decode($jsondata, true);
-            console.log(count_cart);
             $('.count_cart').html([count_cart]);
             var list_cart = response.content;
-            console.log(list_cart);
-            // console.log(list_cart[1]);
-            for (var i = 0; i < list_cart.length; i++) {
-                console.log(list_cart[i]);
-            }
-            // list_cart.forEach(function(element) {
-            //     var name = element.name;
-            //     // var price = element.price;
-            //     // var qty = element.qty;
-            //     console.log(name);
-            //     // console.log(price);
-            //     // console.log(qty);
-            // });
+            var content = "";
+            $.each(list_cart, function(key, value) {
+                content += '<div class="product-cart">';
+                content += '<div class="one-forth">';
+                content += '<div class="product-img">';
+                content += '<img src="http://banhang.win/' + value.options.image + '" width="100" alt="">';
+                content += '</div>';
+                content += '<div class="display-tc">';
+                content += '<h3 id="modal_name">' + value.name + '</h3>';
+                content += '</div>';
+                content += '</div>';
+                content += '<div class="one-eight text-center">';
+                content += '<div class="display-tc">';
+                content += '<span class="price">' + value.price + '</span>';
+                content += '</div>';
+                content += '</div>';
+                content += '<div class="one-eight text-center">';
+                content += '<div class="display-tc">';
+                content += '<h3>' + value.qty + '</h3>';
+                content += '</div>';
+                content += '</div>';
+                content += '<div class="one-eight text-center">';
+                content += '<div class="display-tc">';
+                content += '<h3>' + value.subtotal + '</h3>';
+                content += '</div>';
+                content += '</div>';
+                content += '<div class="one-eight text-center">';
+                content += '<div class="display-tc">';
+                content += '<div class="closed button-delete"  onclick="delete_cart_ajax("' + value.rowId + '",this)"></div>';
+                content += '</div>';
+                content += '</div>';
+                content += '</div>';
+
+                // var html = "";
+                //     var item = "<tr>";
+                //     "<td>" + value.name + "</td>";
+
+                // $.each(value, function(itemKey, itemValue) {
+                //     console.log(itemKey + ' ' + itemValue);
+                //      if (itemKey == 'name') {
+                //          console.log(' this itemKey: ' + itemKey + ' this itemValue: ' + itemValue);
+                //      }
+                // });
+            });
+            $('.modal-body').html(content);
 
         },
     });

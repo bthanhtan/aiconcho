@@ -12,41 +12,13 @@
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
 						<h4 class="modal-title">List cart</h4>
-						</div>
+                        
 						<div class="modal-body">
-							<div class="product-cart">
-								<div class="one-forth">
-									<div class="product-img">
-									<img src="" width="100" alt="">
-									</div>
-									<div class="display-tc">
-										<h3>name</h3>
-									</div>
-								</div>
-								<div class="one-eight text-center">
-									<div class="display-tc">
-										<span class="price">price</span>
-									</div>
-								</div>
-								<div class="one-eight text-center">
-									<div class="display-tc">
-									<h3>qty</h3>
-									</div>
-								</div>
-								<div class="one-eight text-center">
-									<div class="display-tc">
-										<span class="price">total</span>
-									</div>
-								</div>
-								<div class="one-eight text-center">
-									<div class="display-tc">
-										<div class="closed button-delete"  onclick=""></div>
-									</div>
-								</div>
-							</div>
+							
 						</div>
-						<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<div class="modal-footer" style="border-top: none;">
+                        <a href="{{route('user.cart_checkout')}}" class="btn btn-primary">Checkout</a>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 						</div>
 					</div>
 				</div>

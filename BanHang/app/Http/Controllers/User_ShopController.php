@@ -38,8 +38,8 @@ class User_ShopController extends Controller
         $a = Cart::count();
         $b = Cart::content();
         return response()->json(['count' => $a,'content'=>$b]);
-        return response($a);
         return response()->json($b);
+        return response($a);
     }
 
     public function shop_show_cart()
@@ -89,6 +89,7 @@ class User_ShopController extends Controller
             $order->orderDetail()->create($order_detail);
             // OrderDetail::create($order_detail);
         }
+        return view('user.ordercomplete');
     }
     public function cart_ordercomplete()
     {   
