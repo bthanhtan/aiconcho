@@ -8,6 +8,7 @@
 	<meta name="description" content="" />
 	<meta name="keywords" content="" />
 	<meta name="author" content="" />
+	<!-- <base href="/"> -->
 
   <!-- Facebook and Twitter integration -->
 	<meta property="og:title" content=""/>
@@ -82,9 +83,11 @@
 								<li><a href="{{route('user.blog')}}">Blog</a></li>
 								<li><a href="{{route('user.about')}}">About</a></li>
 								<li><a href="{{route('user.contact')}}">Contact</a></li>
-								<li class="btn-lg" data-toggle="modal" data-target="#myModal"><a href="{{ ($name_page == 'shop') ? '#' : route('user.cart') }}">
-									<i class="icon-shopping-cart"></i> Cart [<span class="count_cart">{{Cart::count()}}</span>]</a>
+								<li class="btn-lg" data-toggle="modal" data-target="#myModal" onclick="content_cart_load_more_ajax()"><i class="icon-shopping-cart"></i> Cart [<span class="count_cart">{{Cart::count()}}</span>]
 								</li>
+								<!-- <li class="btn-lg" data-toggle="modal" data-target="#myModal"><a href="{{ ($name_page == 'shop') ? '#' : route('user.cart') }}">
+									<i class="icon-shopping-cart"></i> Cart [<span class="count_cart">{{Cart::count()}}</span>]</a>
+								</li> -->
 							</ul>
 						</div>
 					</div>

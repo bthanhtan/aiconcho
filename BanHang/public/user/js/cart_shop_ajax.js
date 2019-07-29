@@ -43,7 +43,7 @@ function cart_ajax(id) {
                 content += '</div>';
                 content += '<div class="one-eight text-center">';
                 content += '<div class="display-tc">';
-                content += '<div class="closed button-delete"  onclick="delete_cart_ajax("' + value.rowId + '",this)"></div>';
+                content += '<div class="closed button-delete"  onclick="delete_cart_ajax('+ "\'"+ value.rowId +"\'" +',this)"></div>;'
                 content += '</div>';
                 content += '</div>';
                 content += '</div>';
@@ -66,13 +66,26 @@ function cart_ajax(id) {
 }
 
 function delete_cart_ajax(id, thisButton) {
-    var url = '/user/cart/' + id;
+    var url = '/user/cart/delete/' + id;
     var type = 'get';
     $.ajax({
         url: url,
         type: type,
         success: function(response) {
             $(thisButton).parents('.product-cart').remove();
+        },
+    });
+}
+
+function content_cart_load_more_ajax() {
+    console.log('content_cart_load_more_ajax');
+    var url = '/user/cart/content_cart_load_more_ajax';
+    var type = 'get';
+    $.ajax({
+        url: url,
+        type: type,
+        success: function(response) {
+            $('.modal-body').html(response);
         },
     });
 }

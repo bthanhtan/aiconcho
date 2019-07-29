@@ -19,7 +19,7 @@ Route::get('/', function () {
 });
 
 Route::group(['prefix'=>'user','as'=>'user.'], function(){
-    // Route::get('/user_master', 'User_ShopController@user_master')->name('user_master');
+    Route::get('/cart/content_cart_load_more_ajax', 'User_ShopController@content_cart_load_more_ajax')->name('content_cart_load_more_ajax');
     Route::get('/index', function () {
         return view('user.index');
     })->name('index');
@@ -31,7 +31,7 @@ Route::group(['prefix'=>'user','as'=>'user.'], function(){
     Route::get('/cart/checkout', 'User_ShopController@cart_checkout')->name('cart_checkout');
     Route::post('/cart/db', 'User_ShopController@cart_db')->name('cart_db');
     // Route::post('/cart/db_store', 'User_ShopController@cart_db_store')->name('cart_db_store');
-    Route::get('/cart/{id}', 'User_ShopController@shop_delete_cart')->name('shop_delete_cart');
+    Route::get('/cart/delete/{id}', 'User_ShopController@shop_delete_cart')->name('shop_delete_cart');
     Route::get('/product_detail/{id}', 'User_ShopController@product_detail')->name('product_detail');
     Route::get('/blog', function () {
         return view('user.blog');

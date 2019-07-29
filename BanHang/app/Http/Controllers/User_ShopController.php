@@ -54,7 +54,7 @@ class User_ShopController extends Controller
     }
     public function shop_delete_cart($id)
     {   
-        Cart::remove($id);
+        // Cart::remove($id);
     }
     public function cart_checkout()
     {   
@@ -100,7 +100,11 @@ class User_ShopController extends Controller
         dd(Cart::store('id'));
     }
     
-    
+    public function content_cart_load_more_ajax(Request $request)
+	{
+        $Carts = Cart::content();     
+        return response()->json(view()->make('user.content_cart_load_more_ajax', array('Carts' => $Carts))->render());
+	}
     /**
      * Show the form for creating a new resource.
      *
