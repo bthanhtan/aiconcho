@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\ProductCategory;
 use App\Product;
@@ -63,6 +64,12 @@ class User_ShopController extends Controller
     
     public function cart_db(Request $request)
     {   
+        $id = Auth::user()->id;
+        $order_total = 0;
+        $carts = Cart::content();
+        foreach ($carts as  $cart) {
+            $order_total += ($cart->price * $cart->qty) ;
+        }
         // $b =\Carbon\Carbon::parse($a)->now()->format('y-m-d h:i:s');
         $c =\Carbon\Carbon::now()->toDateTimeString();
         // $rule= [
@@ -72,8 +79,12 @@ class User_ShopController extends Controller
         //     "delivery_at" => "required",
         // ];
         $data_order = [
-            "customer_id" => 1,
+            "customer_id" => $id,
+            "total" => $order_total,
+            "status" => '1',
             "delivery_address" => $request->delivery_address,
+            "name" => $request->name,
+            "phone" => $request->phone,
             "order_at" => Carbon::now()->toDateTimeString(),
             "delivery_at" => Carbon::now()->toDateTimeString(),
         ];

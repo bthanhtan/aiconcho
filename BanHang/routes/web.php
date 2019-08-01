@@ -57,6 +57,15 @@ Route::group(['prefix'=>'category','as'=>'category.'], function(){
     Route::delete('/delete/{id}', 'ProductCategoryController@destroy')->name('delete');
 });
 
+Route::group(['prefix'=>'ad_user','as'=>'ad_user.'], function(){
+    Route::get('/', 'UserController@index')->name('index');
+    Route::get('/create', 'UserController@create')->name('create');
+    Route::post('/store', 'UserController@store')->name('store');
+    Route::get('/edit/{id}', 'UserController@edit')->name('edit');
+    Route::put('/update/{id}', 'UserController@update')->name('update');
+    Route::delete('/delete/{id}', 'UserController@destroy')->name('delete');
+});
+
 Route::group(['prefix'=>'product','as'=>'product.'], function(){
     Route::get('/', 'ProductController@index')->name('index');
     Route::get('/show/{id}', 'ProductController@show')->name('show');
@@ -70,3 +79,6 @@ Route::group(['prefix'=>'product','as'=>'product.'], function(){
     Route::post('/find_show', 'ProductController@find_show')->name('find_show');
     Route::get('/product_cart/{id}', 'ProductController@addItemToCart')->name('addItemToCart');
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

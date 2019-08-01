@@ -32,8 +32,12 @@
                     <div class="row">
                         <div class="form-group">
                             <div class="col-md-6">
-                                <label for="fname">customer_id</label>
-                                <input type="text" id="fname" class="form-control" placeholder="id" name="customer_id">
+                                <label for="fname">name</label>
+                                <input type="text" id="fname" class="form-control" placeholder="id" name="name">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="fname">phone</label>
+                                <input type="text" id="lname" class="form-control" placeholder="địa chỉ giao hàng" name="phone">
                             </div>
                             <div class="col-md-6">
                                 <label for="fname">delivery_address</label>
