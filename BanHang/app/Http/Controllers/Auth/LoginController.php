@@ -31,15 +31,7 @@ class LoginController extends Controller
     
     // protected $redirectTo = '$role';
 
-    protected function redirectTo(){
-       
-        if(Auth::user()->role == "1"){
-            return '/product';
-        }
-        elseif(Auth::user()->role == "2"){
-            return '/user/index';
-        }
-    }
+    
     /**
      * Create a new controller instance.
      *
@@ -48,5 +40,16 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+    protected function loggedOut(){
+        return redirect('/home');
+    }
+    protected function authenticated(){
+        if(Auth::user()->role == "2"){
+            return redirect()->route('user.shop');
+        }
+        elseif(Auth::user()->role == "1"){
+            return redirect()->route('order.index');
+        }
     }
 }

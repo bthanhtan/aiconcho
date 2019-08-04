@@ -2,7 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Order;
+use App\ProductCategory;
+use App\Product;
+use App\OrderDetail;
+use Carbon\Carbon;
+use Cart;
 
 class OrderController extends Controller
 {
@@ -13,7 +20,8 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $orders = Order::select()->get();
+        return view('admin.order.list',['orders'=>$orders]);
     }
 
     /**
@@ -56,7 +64,10 @@ class OrderController extends Controller
      */
     public function edit($id)
     {
-        //
+        $order = Order::find($id);
+        $orderDetail = $order->orderDetail;
+        
+        return view('admin.order.orderDetail',['orderDetail' => $orderDetail]);
     }
 
     /**
@@ -68,7 +79,19 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rule= [
+            "name" => "required",
+            "phone" => "required",
+            "delivery_address" => "required",
+            "order_at" => "required",
+            "delivery_at" => "required",
+            "total" => "required",
+            "status" => "required",
+        ];
+        $request->validate($rule);
+        $order = Order::find($id);
+        $order->update($request->all());
+        return redirect()->route('order.index');
     }
 
     /**
@@ -79,6 +102,8 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $order = Order::find($id);
+        $order->delete();
+        return redirect()->route('order.index');
     }
 }

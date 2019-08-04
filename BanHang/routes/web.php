@@ -82,3 +82,11 @@ Route::group(['prefix'=>'product','as'=>'product.'], function(){
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['prefix'=>'order','as'=>'order.'], function(){
+    Route::get('/', 'OrderController@index')->name('index');
+    Route::post('/store', 'OrderController@store')->name('store');
+    Route::get('/edit/{id}', 'OrderController@edit')->name('edit');
+    Route::put('/update/{id}', 'OrderController@update')->name('update');
+    Route::delete('/delete/{id}', 'OrderController@destroy')->name('delete');
+});

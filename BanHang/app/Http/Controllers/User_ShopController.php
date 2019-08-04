@@ -96,6 +96,7 @@ class User_ShopController extends Controller
               "order_id" => $order->id ,
               "product_id" => $product->id,
               "quantity" => $product->qty,
+              "price" => $order->price,
             ];
             $order->orderDetail()->create($order_detail);
             // OrderDetail::create($order_detail);

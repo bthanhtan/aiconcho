@@ -89,3 +89,8 @@ function content_cart_load_more_ajax() {
         },
     });
 }
+
+
+function pending_ajax() {
+    console.log('pending_ajax');
+}
